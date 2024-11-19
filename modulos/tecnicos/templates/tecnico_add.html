@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <div class="msg">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/tecnicos/save" method="post">
+        <div class="subtitulo"><h1>Adicionar Técnico</h1></div>
+        <fieldset>
+            <div>
+                <label for="nome">Nome: </label>
+            </div>
+            <div>
+                <input type="text" name="nome" id="nome">
+            </div>
+            <div>
+                <label for="especialidade">Especialidade: </label>
+            </div>
+            <div>
+                <input type="text" name="especialidade" id="especialidade">
+            </div>
+            <button type="submit">Salvar</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

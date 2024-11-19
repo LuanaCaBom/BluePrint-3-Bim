@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+            <di class="msg">
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/projetos/save" method="post">
+        <div class="subtitulo"><h1>Adicionar Projeto</h1></div>
+        <fieldset>
+            <div>
+                <label for="nome">Nome: </label>
+            </div>
+            <div>
+                <input type="text" name="nome" id="nome" required>
+            </div>
+            <div>
+                <label for="ano_inicio">Ano de Início: </label>
+            </div>
+            <div>
+                <input type="number" name="ano_inicio" id="ano_inicio" required>
+            </div>
+            <div>
+                <label for="id_tecnico">Técnico: </label>
+            </div>
+            <div>
+                <select id="id_tecnico" name="id_tecnico" required>
+                    {% for t in tecnicos %}
+                        <option value="{{t.id}}">{{t.nome}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit">Salvar</button>
+        </fieldset>
+    </form>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+        <div class="msg">
+            {{ msg }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/tecnicos/editasave" method="post">
+        <div class="subtitulo"><h1>Editar Técnico</h1></div>
+        <fieldset>
+            <input type="hidden" name="id" value="{{dados.id}}">
+            <div>
+                <label for="nome">Nome: </label>
+            </div>
+            <div>
+                <input type="text" name="nome" id="nome" value="{{dados.nome}}" required>
+            </div>
+            <div>
+                <label for="especialidade">Especialidade: </label>
+            </div>
+            <div>
+                <input type="text" name="especialidade" id="especialidade" value="{{dados.especialidade}}" required>
+            </div>
+            <section>
+                <button type="submit">Salvar</button>
+            </section>
+        </fieldset>
+    </form>
+
+{% endblock %}

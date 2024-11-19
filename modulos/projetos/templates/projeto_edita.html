@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+    {% set mensagens = get_flashed_messages() %}
+    {% if mensagens %}
+        {% for msg in mensagens %}
+        <div class="msg">
+            {{ msg }}
+        </div>
+        {% endfor %}
+    {% endif %}
+    <form action="/projetos/editasave" method="post">
+        <div class="subtitulo"><h1>Editar Projeto</h1></div>
+        <fieldset>
+            <input type="hidden" name="id" value="{{dados.id}}">
+            <div>
+                <label for="nome">Nome: </label>
+            </div>
+            <div>
+                <input type="text" name="nome" id="nome" value="{{dados.nome}}" required>
+            </div>
+            <div>
+                <label for="ano_inicio">Ano de Início: </label>
+            </div>
+            <div>
+                <input type="number" name="ano_inicio" id="ano_inicio" value="{{dados.ano_inicio}}" required>
+            </div>
+            <div>
+                <label for="id_tecnico">Técnico: </label>
+            </div>
+            <div>
+                <select id="id_tecnico" name="id_tecnico" required>
+                    {% for t in tecnicos %}
+                        {% if t.id == dados.id_tecnico %}
+                        <option value="{{t.id}}" selected >{{t.nome}}</option>
+                        {% else %}
+                        <option value="{{t.id}}" >{{t.nome}}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+            </div>
+            <section>
+                <button type="submit">Salvar</button>
+            </section>
+        </fieldset>
+    </form>
+
+{% endblock %}

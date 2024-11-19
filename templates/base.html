@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Print</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/estilo.css')}}">
+</head>
+<body>
+    <header>
+        <div><h1>Técnicos</h1></div>
+        <div><a href="/"><img src="/static/img/logo e.png" alt="logo"></a></div>
+        <div><h1> Projetos</h1></div>
+    </header>
+    <nav>
+        <div><a href="/tecnicos">Técnico</a></div>             
+        <div><a href="/projetos">Projeto</a></div>
+    </nav>
+    <main>
+        {% block conteudo %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div>
+            <img src="/static/img/linkedin.png" alt="linkedin">
+            <img src="/static/img/insta.png" alt="instagram">
+            <img src="/static/img/whatsapp.png" alt="whatsapp">
+        </div>
+        <div>
+            <h2>@copyright</h2>
+        </div>
+    </footer>
+</body>
+</html>
